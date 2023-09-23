@@ -1,0 +1,18 @@
+{
+  "cwd": "D:\\Proyectos\\TestF7Svelte",
+  "type": [
+    "web"
+  ],
+  "name": "My Test App",
+  "framework": "svelte",
+  "template": "single-view",
+  "bundler": "vite",
+  "cssPreProcessor": "scss",
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}
