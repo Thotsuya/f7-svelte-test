@@ -12,11 +12,6 @@
             A Simple Test App
         </NavTitleLarge>
     </Navbar>
-    <!-- Toolbar -->
-    <Toolbar bottom>
-        <Link>Left Link</Link>
-        <Link>Right Link</Link>
-    </Toolbar>
     <!-- Page content -->
     <BlockTitle>Query Chuck Norris Jokes</BlockTitle>
     <List form strongIos dividersIos insetIos>
@@ -25,6 +20,7 @@
                 name="search"
                 placeholder="Enter your search"
                 bind:value={search}
+                on:input={filterQuotes}
         >
             <Icon slot="media" f7="search"></Icon>
         </ListInput>
@@ -40,21 +36,44 @@
 
     <Block>
         <div class="grid grid-cols-1 medium-grid-cols-4 grid-gap">
-            {#each quotes as quote, i}
-                <Card raised class="demo-card-header-pic">
-                    <CardHeader
-                            valign="bottom"
-                            style="background-image: url(https://picsum.photos/400/300)"
-                    >
-                        Chuck Norris Quote {i + 1}
-                    </CardHeader>
-                    <CardContent>
-                        <p>
-                            {quote.value}
-                        </p>
-                    </CardContent>
-                </Card>
-            {/each}
+
+            {#if search && filteredQuotes.length === 0}
+                <p>No results found</p>
+            {:else if filteredQuotes.length > 0}
+                {#each filteredQuotes as quote, i}
+                    <Card raised class="demo-card-header-pic">
+                        <CardHeader
+                                valign="bottom"
+                                style="background-image: url(https://picsum.photos/400/300)"
+                        >
+                            Chuck Norris Quote {i + 1}
+                        </CardHeader>
+                        <CardContent>
+                            <p>
+                                {quote.value}
+                            </p>
+                        </CardContent>
+                    </Card>
+                {/each}
+            {:else}
+                {#each quotes as quote, i}
+                    <Card raised class="demo-card-header-pic">
+                        <CardHeader
+                                valign="bottom"
+                                style="background-image: url(https://picsum.photos/400/300)"
+                        >
+                            Chuck Norris Quote {i + 1}
+                        </CardHeader>
+                        <CardContent>
+                            <p>
+                                {quote.value}
+                            </p>
+                        </CardContent>
+                    </Card>
+                {/each}
+            {/if}
+
+
         </div>
     </Block>
 </Page>
@@ -80,6 +99,16 @@
     import {Quote, RootState} from "../js/store";
 
     let quotes: Quote[] = useStore('quotes', (value: Quote[]) => quotes = value);
+    let filteredQuotes: Quote[] =  []
     let search: string = '';
+
+    const filterQuotes = () => {
+        if (search === '') {
+            return quotes;
+        }
+        return filteredQuotes = quotes.filter((quote: Quote) => {
+            return quote.value.toLowerCase().includes(search.toLowerCase());
+        });
+    }
 
 </script>
