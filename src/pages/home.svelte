@@ -79,7 +79,7 @@
     } from 'framework7-svelte';
     import {Quote, RootState} from "../js/store";
 
-    let quotes: any = useStore('quotes', (value: Quote[]) => quotes = value);
+    let quotes: Quote[] = useStore('quotes', (value: Quote[]) => quotes = value);
     let search: string = '';
 
 </script>
