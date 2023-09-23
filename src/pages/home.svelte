@@ -80,11 +80,6 @@
     import {Quote, RootState} from "../js/store";
 
     let quotes: any = useStore('quotes', (value: Quote[]) => quotes = value);
-
-    let randomImages = [
-
-    ]
-
     let search: string = '';
 
 </script>

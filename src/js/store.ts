@@ -7,14 +7,14 @@ export type Quote = {
     url: string;
 }
 
-let initialQuoteState = localStorage.getItem('quotes') ? JSON.parse(localStorage.getItem('quotes')!) : [] as Quote[];
+let initialQuoteState = localStorage.getItem('quotes') ? JSON.parse(localStorage.getItem('quotes')!) : [];
 
 const store = createStore({
     state: {
-        quotes: initialQuoteState,
+        quotes: initialQuoteState as Quote[],
     },
     getters: {
-        quotes({state}) {
+        quotes({state}) : Quote[] {
             return state.quotes;
         }
     },
