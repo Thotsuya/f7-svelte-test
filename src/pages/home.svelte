@@ -44,7 +44,7 @@
                     <Card raised class="demo-card-header-pic">
                         <CardHeader
                                 valign="bottom"
-                                style="background-image: url(https://picsum.photos/400/300)"
+                                style="background-image: url('/chuck.jpg')"
                         >
                             Chuck Norris Quote {i + 1}
                         </CardHeader>
@@ -60,7 +60,7 @@
                     <Card raised class="demo-card-header-pic">
                         <CardHeader
                                 valign="bottom"
-                                style="background-image: url(https://picsum.photos/400/300)"
+                                style="background-image: url('/chuck.jpg')"
                         >
                             Chuck Norris Quote {i + 1}
                         </CardHeader>
