@@ -111,4 +111,15 @@
         });
     }
 
+    //TODO: Replace with your own user id
+    window
+        .Echo
+        .private('App.Models.User.1d67ac74-66d2-4a64-87c2-a462d8f60071')
+        .notification((notification: any) => {
+            console.log(notification);
+        })
+        .error((error: any) => {
+            console.error('Error:', error);
+        });
+
 </script>
